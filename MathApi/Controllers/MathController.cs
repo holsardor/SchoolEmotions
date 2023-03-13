@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using MathApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace MathApi.Controllers
 {
+    [ApiController]
     [Route("[controller]")]
     public class MathController : Controller
     {
@@ -18,15 +20,14 @@ namespace MathApi.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        [HttpGet("add")]
+        public async Task<IActionResult> AddAsync(
+       [FromQuery] long a,
+       [FromQuery] long b,
+       [FromServices] IMathService mathService)
         {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View("Error!");
+            var result = await mathService.AddAsync(a, b);
+            return Ok(new { result = result });
         }
     }
 }
