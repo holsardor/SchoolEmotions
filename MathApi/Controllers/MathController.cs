@@ -24,10 +24,11 @@ namespace MathApi.Controllers
         public async Task<IActionResult> AddAsync(
        [FromQuery] long a,
        [FromQuery] long b,
-       [FromServices] IMathService mathService)
+       [FromServices] IMathService mathService,
+       CancellationToken cancellationToken = default)
         {
             var result = await mathService.AddAsync(a, b);
-            return Ok(new { result = result });
+            return Ok(new { natija = result });
         }
     }
 }

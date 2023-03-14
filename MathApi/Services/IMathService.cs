@@ -1,7 +1,5 @@
-namespace MathApi.Services
+namespace MathApi.Services;
+public interface IMathService
 {
-    public interface IMathService
-    {
-        Task<long> AddAsync(long a, long b);
-    }
+    Task<long> AddAsync(long a, long b, CancellationToken cancellationToken = default);
 }
