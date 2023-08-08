@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MathApi\MathApi.csproj" />
+    <ProjectReference Include="..\SchoolEmotionsApi\SchoolEmotionsApi.csproj" />
   </ItemGroup>
 
 </Project>
